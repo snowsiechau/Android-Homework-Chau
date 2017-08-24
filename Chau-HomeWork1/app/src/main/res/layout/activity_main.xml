@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="gloryhunter.chau_homework1.MainActivity"
+    android:background="#dcc707"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="2">
+
+       <ImageView
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:background="@drawable/shape"
+           android:layout_margin="@dimen/margin"
+           android:layout_weight="2"
+           />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/shape"
+                android:layout_margin="@dimen/margin"
+                android:layout_weight="1"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/shape"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/margin"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape"
+            android:layout_margin="@dimen/margin"
+            android:layout_weight="2"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:layout_margin="@dimen/margin"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:layout_margin="@dimen/margin"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:layout_margin="@dimen/margin"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:layout_margin="@dimen/margin"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:layout_margin="@dimen/margin"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
