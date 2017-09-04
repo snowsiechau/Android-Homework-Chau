@@ -40,7 +40,6 @@ import android.widget.Toast;
         btClear = (Button) findViewById(R.id.bt_clear);
         ib_del = (ImageButton) findViewById(R.id.ib_del);
 
-
         btEqual.setOnClickListener(this);
         btClear.setOnClickListener(this);
         btSub.setOnClickListener(this);
@@ -49,8 +48,8 @@ import android.widget.Toast;
         btDiv.setOnClickListener(this);
         ib_del.setOnClickListener(this);
 
-    }
 
+    }
 
 
         @Override
@@ -58,41 +57,27 @@ import android.widget.Toast;
             switch (view.getId()){
 
                 case R.id.bt_equal:
-                    try {
-                        num2 = Float.parseFloat(tvDisplay.getText().toString());
-
-                        if (add == true) {
-                            tvDisplay.setText("" + (num1 + num2));
-                            add = false;
-                            btAdd.setBackgroundColor(Color.WHITE);
-                        }
-                        if (sub == true){
-                            tvDisplay.setText("" + (num1 - num2));
-                            sub = false;
-                            btSub.setBackgroundColor(Color.WHITE);
-                        }
-                        if (mul == true){
-                            tvDisplay.setText("" + (num1 * num2));
-                            mul = false;
-                            btMul.setBackgroundColor(Color.WHITE);
-                        }
-                        if (div == true){
-                            tvDisplay.setText("" + (num1 / num2));
-                            div = false;
-                            btDiv.setBackgroundColor(Color.WHITE);
-                        }
-
-                    }catch (NumberFormatException ex){
-                        wrongnumber();
-
-                    }
+                   result();
                     break;
 
                 case R.id.bt_add:
                     try {
+                        if (tvDisplay.getText().equals("")){
+                            add = true;
+                            sub = false;
+                            mul = false;
+                            div = false;
+                            backGroundButtonOperator();
+                            break;
+                        }
+
+                        result();
                         addNumber1();
                         add = true;
-                        btAdd.setBackgroundColor(Color.GREEN);
+                        sub = false;
+                        mul = false;
+                        div = false;
+                        backGroundButtonOperator();
                     }catch (NumberFormatException ex){
                         wrongnumber();
                     }
@@ -101,9 +86,21 @@ import android.widget.Toast;
 
                 case R.id.bt_sub:
                     try {
+                        if (tvDisplay.getText().equals("")){
+                            add = false;
+                            sub = true;
+                            mul = false;
+                            div = false;
+                            backGroundButtonOperator();
+                            break;
+                        }
+                        result();
                         addNumber1();
+                        add = false;
                         sub = true;
-                        btSub.setBackgroundColor(Color.GREEN);
+                        mul = false;
+                        div = false;
+                        backGroundButtonOperator();
                     }catch (NumberFormatException ex){
                         wrongnumber();
                     }
@@ -111,9 +108,21 @@ import android.widget.Toast;
 
                 case R.id.bt_mul:
                     try {
+                        if (tvDisplay.getText().equals("")){
+                            add = false;
+                            sub = false;
+                            mul = true;
+                            div = false;
+                            backGroundButtonOperator();
+                            break;
+                        }
+                        result();
                         addNumber1();
+                        add = false;
+                        sub = false;
                         mul = true;
-                        btMul.setBackgroundColor(Color.GREEN);
+                        div = false;
+                        backGroundButtonOperator();
                     }catch (NumberFormatException ex){
                         wrongnumber();
                     }
@@ -121,9 +130,21 @@ import android.widget.Toast;
 
                 case R.id.bt_div:
                     try {
+                        if (tvDisplay.getText().equals("")){
+                            add = false;
+                            sub = false;
+                            mul = false;
+                            div = true;
+                            backGroundButtonOperator();
+                            break;
+                        }
+                        result();
                         addNumber1();
+                        add = false;
+                        sub = false;
+                        mul = false;
                         div = true;
-                        btDiv.setBackgroundColor(Color.GREEN);
+                        backGroundButtonOperator();
                     }catch (NumberFormatException ex){
                         wrongnumber();
                     }
@@ -131,6 +152,13 @@ import android.widget.Toast;
 
                 case R.id.bt_clear:
                     tvDisplay.setText("");
+                    num1 = 0;
+                    num2 = 0;
+                    add = false;
+                    sub = false;
+                    mul = false;
+                    div = false;
+                    backGroundButtonOperator();
                     break;
 
                 case R.id.ib_del:
@@ -141,9 +169,71 @@ import android.widget.Toast;
 
                 default:
                     break;
+            }
+        }
 
+        private void backGroundButtonOperator() {
+            if (add){
+                btAdd.setBackgroundColor(Color.GREEN);
+                btSub.setBackgroundColor(Color.WHITE);
+                btMul.setBackgroundColor(Color.WHITE);
+                btDiv.setBackgroundColor(Color.WHITE);
+            }
+            if (sub){
+                btAdd.setBackgroundColor(Color.WHITE);
+                btSub.setBackgroundColor(Color.GREEN);
+                btMul.setBackgroundColor(Color.WHITE);
+                btDiv.setBackgroundColor(Color.WHITE);
+            }
+            if (mul){
+                btAdd.setBackgroundColor(Color.WHITE);
+                btSub.setBackgroundColor(Color.WHITE);
+                btMul.setBackgroundColor(Color.GREEN);
+                btDiv.setBackgroundColor(Color.WHITE);
+            }
+            if (div){
+                btAdd.setBackgroundColor(Color.WHITE);
+                btSub.setBackgroundColor(Color.WHITE);
+                btMul.setBackgroundColor(Color.WHITE);
+                btDiv.setBackgroundColor(Color.GREEN);
+            }
+            if (!div && !mul && !sub && !add){
+                btAdd.setBackgroundColor(Color.WHITE);
+                btSub.setBackgroundColor(Color.WHITE);
+                btMul.setBackgroundColor(Color.WHITE);
+                btDiv.setBackgroundColor(Color.WHITE);
+            }
+        }
+
+        private void result() {
+            try {
+                num2 = Float.parseFloat(tvDisplay.getText().toString());
+                if (add) {
+                    tvDisplay.setText("" + (num1 + num2));
+                    add = false;
+                    btAdd.setBackgroundColor(Color.WHITE);
+                }
+                if (sub){
+                    tvDisplay.setText("" + (num1 - num2));
+                    sub = false;
+                    btSub.setBackgroundColor(Color.WHITE);
+                }
+                if (mul){
+                    tvDisplay.setText("" + (num1 * num2));
+                    mul = false;
+                    btMul.setBackgroundColor(Color.WHITE);
+                }
+                if (div){
+                    tvDisplay.setText("" + (num1 / num2));
+                    div = false;
+                    btDiv.setBackgroundColor(Color.WHITE);
+                }
+
+            }catch (NumberFormatException ex){
+                wrongnumber();
 
             }
+
         }
 
         private void addNumber1() {

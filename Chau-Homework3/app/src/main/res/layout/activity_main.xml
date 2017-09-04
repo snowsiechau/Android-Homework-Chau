@@ -15,7 +15,6 @@
         android:layout_marginBottom="100dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
-        android:hint="0"
         android:maxLength="20"
         android:maxLines="1"
         android:textSize="@dimen/numberSize"
