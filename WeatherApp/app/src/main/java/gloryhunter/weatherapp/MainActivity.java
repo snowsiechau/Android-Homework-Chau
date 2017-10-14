@@ -21,6 +21,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     public static final String APPID = "56f68d79992e3efe241ddda0e46e4609";
+    public static final String UNIT = "metric";
     EditText etLoction;
     Button btCheck;
     TextView tvLat, tvLon, tvCountry, tvMain, tvTemp, tvHum;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 GetWeatherService getWeatherService = RetrofitFactory.getInstance()
                         .create(GetWeatherService.class);
 
-                getWeatherService.getWeather(etLoction.getText().toString(), APPID).enqueue(new Callback<MainObjectJSON>() {
+                getWeatherService.getWeather(etLoction.getText().toString(), APPID, UNIT).enqueue(new Callback<MainObjectJSON>() {
                     @Override
                     public void onResponse(Call<MainObjectJSON> call, Response<MainObjectJSON> response) {
                         CoordJSON coord = response.body().getCoord();
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         MainJSON main = response.body().getMain();
-                        String temp = String.valueOf((int) (main.getTemp() - 273.15));
+                        String temp = String.valueOf(main.getTemp());
                         String hum = String.valueOf(main.getHumidity());
                         tvTemp.setText(temp);
                         tvHum.setText(hum);
