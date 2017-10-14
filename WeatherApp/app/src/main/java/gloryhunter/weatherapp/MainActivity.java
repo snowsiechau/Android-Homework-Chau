@@ -36,42 +36,45 @@ public class MainActivity extends AppCompatActivity {
         btCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GetWeatherService getWeatherService = RetrofitFactory.getInstance()
-                        .create(GetWeatherService.class);
 
-                getWeatherService.getWeather(etLoction.getText().toString(), APPID, UNIT).enqueue(new Callback<MainObjectJSON>() {
-                    @Override
-                    public void onResponse(Call<MainObjectJSON> call, Response<MainObjectJSON> response) {
-                        CoordJSON coord = response.body().getCoord();
-                        String lat = String.valueOf(coord.getLat());
-                        tvLat.setText(lat);
-                        String lon = String.valueOf(coord.getLon());
-                        tvLon.setText(lon);
+                if (etLoction.getText().toString().equals("")) {
+                    Toast.makeText(MainActivity.this, "Enter Location", Toast.LENGTH_SHORT).show();
+                } else {
+                    GetWeatherService getWeatherService = RetrofitFactory.getInstance()
+                            .create(GetWeatherService.class);
 
-                        SysJSON sys = response.body().getSys();
-                        tvCountry.setText(sys.getCountry());
+                    getWeatherService.getWeather(etLoction.getText().toString(), APPID, UNIT).enqueue(new Callback<MainObjectJSON>() {
+                        @Override
+                        public void onResponse(Call<MainObjectJSON> call, Response<MainObjectJSON> response) {
+                            CoordJSON coord = response.body().getCoord();
+                            String lat = String.valueOf(coord.getLat());
+                            tvLat.setText(lat);
+                            String lon = String.valueOf(coord.getLon());
+                            tvLon.setText(lon);
 
-                        List<WeatherJSON> weathers = response.body().getWeather();
-                        for (WeatherJSON weather: weathers){
-                            tvMain.setText(weather.getDescription());
+                            SysJSON sys = response.body().getSys();
+                            tvCountry.setText(sys.getCountry());
+
+                            List<WeatherJSON> weathers = response.body().getWeather();
+                            for (WeatherJSON weather : weathers) {
+                                tvMain.setText(weather.getDescription());
+                            }
+
+                            MainJSON main = response.body().getMain();
+                            String temp = String.valueOf(main.getTemp());
+                            String hum = String.valueOf(main.getHumidity());
+                            tvTemp.setText(temp);
+                            tvHum.setText(hum);
                         }
 
-                        MainJSON main = response.body().getMain();
-                        String temp = String.valueOf(main.getTemp());
-                        String hum = String.valueOf(main.getHumidity());
-                        tvTemp.setText(temp);
-                        tvHum.setText(hum);
-                    }
-
-                    @Override
-                    public void onFailure(Call<MainObjectJSON> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, "no connection", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<MainObjectJSON> call, Throwable t) {
+                            Toast.makeText(MainActivity.this, "no connection", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
-
-
     }
 
     private void loadUI() {
