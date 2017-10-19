@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_main_activity">50dp</dimen>
+    <dimen name="width_textview_main">200dp</dimen>
+</resources>

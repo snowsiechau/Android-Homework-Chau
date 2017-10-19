@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="gloryhunter.weattherapp_2.activities.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:background="#0669b7">
+
+        <ImageView
+            android:id="@+id/iv_weather"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="@dimen/margin_main_activity"
+            android:layout_marginTop="@dimen/margin_main_activity" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="@dimen/width_textview_main"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_main_activity"
+            android:layout_marginTop="@dimen/margin_main_activity"
+            android:layout_toEndOf="@+id/iv_weather"
+            android:text="London"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_country"
+            android:layout_width="@dimen/width_textview_main"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_city"
+            android:layout_marginLeft="@dimen/margin_main_activity"
+            android:layout_toEndOf="@+id/iv_weather"
+            android:text="UK"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="@dimen/width_textview_main"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_country"
+            android:layout_marginLeft="@dimen/margin_main_activity"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/iv_weather"
+            android:text="Mondday"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_descrip"
+            android:layout_width="@dimen/width_textview_main"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_marginLeft="@dimen/margin_main_activity"
+            android:layout_toEndOf="@id/iv_weather"
+            android:text="desciption" />
+
+        <TextView
+            android:id="@+id/tv_unit"
+            android:layout_width="@dimen/width_textview_main"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_descrip"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/iv_weather"
+            android:gravity="center"
+            android:text="'C"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_tempMain"
+            android:layout_width="100dp"
+            android:layout_height="89dp"
+            android:layout_below="@id/tv_descrip"
+            android:layout_toEndOf="@id/iv_weather"
+            android:layout_toRightOf="@id/tv_unit"
+            android:gravity="top"
+            android:text="24"
+            android:textSize="89sp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_hum"
+            android:layout_width="@dimen/width_textview_main"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tempMain"
+            android:layout_marginLeft="@dimen/margin_main_activity"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/iv_weather"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_speed"
+            android:layout_width="@dimen/width_textview_main"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_hum"
+            android:layout_marginLeft="@dimen/margin_main_activity"
+            android:layout_toEndOf="@id/iv_weather"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/recycle_view"
+       android:background="#ACE7A6"
+       >
+
+   </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
